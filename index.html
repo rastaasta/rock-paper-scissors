@@ -9,13 +9,6 @@
     
     <script>
 
-        function getHumanChoice() {
-            const input = prompt("rock, paper, scissor ");
-            return input;
-        }
-
-        console.log(getHumanChoice())
-
         function getComputerChoice() {
             const randomNumber = Math.floor(Math.random() * 3);
             if (randomNumber === 0) {
@@ -32,8 +25,58 @@
             // return randomIndex;
         }
 
+        // console.log(getComputerChoice());
 
-        console.log(getComputerChoice());
+        function getHumanChoice() {
+            const input = prompt("rock, paper, scissor ");
+            return input;
+        }
+
+        // console.log(getHumanChoice());
+
+        let humanScore = 0;
+        let computerScore = 0;
+
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+
+        function playGame() {
+
+            function playRound(humanChoice, computerChoice) {
+                const humanSelection = humanChoice.toLowerCase();
+                if (humanSelection === computerSelection) { 
+                    alert("It's a tie!");
+                } else if (
+                    (humanSelection === "rock" && computerSelection === "scissors") ||
+                    (humanSelection === "paper" && computerSelection === "rock") ||
+                    (humanSelection === "scissor" && computerSelection === "paper")
+
+                ) {
+                    humanScore++;
+                    alert("You win!");
+                } else {
+                    computerScore++;
+                    alert("You lose!");
+                }
+            }
+
+             for (let i = 0; i < 5; i++) {
+                let result = playRound(humanSelection, computerSelection);
+                alert("Round" ${i+1}: ${result} ("You:"  ${humanSelection} vs "CPU:" ${computerSelection}) );
+                alert("Score" -> You: ${humanScore} | "CPU:" ${computerScore});
+            }
+            alert("Game Over");
+            If (humanScore > computerScore) {
+                alert("You win the game");
+            } else if (computerScore > humanScore) {
+                alert("You lose the game");
+            } else {
+                alert ("It's a tie game!");
+            }
+
+        }
+
+        console.log(playGame());
 
     </script>
 
